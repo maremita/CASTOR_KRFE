@@ -12,9 +12,9 @@ import Evaluation
 # Threshold (percentage of performance loss in terms of F-measure to reduce the number of attributes)
 T = 1
 # Minimum length of k-mer(s)
-k_min = 3
+k_min = 5
 # Maximum length of k-mer(s)
-k_max = 10
+k_max = 5
 # Minimum number of features to identify
 features_min = 1
 # Maximum number of features to identify
@@ -22,7 +22,7 @@ features_max = 50
 # Training dataset
 training_dataset = "HIVGRPCG"
 # Testing dataset
-testing_dataset = ""
+testing_dataset = "HIVGRPCG"
 
 
 ##################

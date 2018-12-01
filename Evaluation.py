@@ -57,4 +57,10 @@ def prediction(training_data, testing_data, best_k_mers, best_k_length):
 	print("Confusion matrix \n", confusion_matrix(y_test, y_pred))
 
 
+	f = open("Output/Prediction.txt", "w")
+	f.write("Sequence id, Predicted class \n");
+	for i, d in enumerate(testing_data): f.write(d[0] + ", " + y_pred[i] + "\n");
+	f.close()
+
+
 
