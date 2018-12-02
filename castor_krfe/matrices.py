@@ -28,9 +28,3 @@ def generateMatrice(data, K_mer, k):
 	
 	# Return matrices X and y  (matrix attributes and matrix class)
 	return X, y
-
-
-
-
-
-

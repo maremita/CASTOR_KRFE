@@ -1,9 +1,9 @@
 ###############
 ### Imports ###
 ############### 
-import Data
-import Extraction
-import Evaluation
+from castor_krfe import data
+from castor_krfe import extraction
+from castor_krfe import evaluation
 
 #################
 ### VARIABLES ###
@@ -32,24 +32,24 @@ testing_dataset = "HIVGRPCG"
 
 # Get training dataset
 print("Loading of the training dataset...")
-if training_dataset: training_data = Data.generateData(training_dataset)
+if training_dataset: training_data = data.generateData(training_dataset)
 
 # Get testing dataset
 print("Loading of the testing dataset...")
-if testing_dataset: testing_data = Data.generateData(testing_dataset)
+if testing_dataset: testing_data = data.generateData(testing_dataset)
 
 ############################
 ### FEATURES EXTRACTION  ###
 ############################
-best_k_mers, best_k_length = Extraction.extractKmers(T, training_data, k_min, k_max, features_min, features_max)
+best_k_mers, best_k_length = extraction.extractKmers(T, training_data, k_min, k_max, features_min, features_max)
 print("Identified k =", best_k_length)
 print("Identified k-mers  =",best_k_mers)
 
 ##################
 ### EVALUATION ###
 ##################
-Evaluation.cross_validation(training_data, best_k_mers, best_k_length, training_data)
+evaluation.cross_validation(training_data, best_k_mers, best_k_length, training_data)
 if testing_dataset:
 	print("\nPrediction")
-	Evaluation.prediction(training_data, testing_data, best_k_mers, best_k_length)
+	evaluation.prediction(training_data, testing_data, best_k_mers, best_k_length)
 
