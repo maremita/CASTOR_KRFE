@@ -1,7 +1,6 @@
 def generateMatrice(data, K_mer, k):
 	# Variables
 	X = []
-	y = []
 
 	# Generate K-mer dictionnary
 	X_dict = {}
@@ -22,15 +21,18 @@ def generateMatrice(data, K_mer, k):
 			x.append(x_dict.get(value))
 		X.append(x)
 
+	# Return matrices X (matrix attributes)
+	return X
+
+
+def generateXYMatrice(data, K_mer, k):
+	# Variables
+	X = generateMatrice(data, K_mer, k)
+	y = []
+
 	# Generates y (matrix class)
 	for i in data:
 		y.append(i[2])
 	
 	# Return matrices X and y  (matrix attributes and matrix class)
 	return X, y
-
-
-
-
-
-
