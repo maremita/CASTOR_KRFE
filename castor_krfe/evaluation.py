@@ -38,7 +38,7 @@ def train_model(training_data, best_k_mers):
     return clf
 
 
-def validation(clf, testing_data, best_k_mers, valid_file):
+def evaluation(clf, testing_data, best_k_mers, eval_file):
 
     # Generate matrices
     best_k_length = len(best_k_mers[0])
@@ -48,14 +48,14 @@ def validation(clf, testing_data, best_k_mers, valid_file):
     y_pred = clf.predict(X_test)
 
     # Print results
-    print("\nClassification report of validation\n")
+    print("\nClassification report of evaluation\n")
     print(classification_report(y_test, y_pred, digits = 3))
     print("Accuracy :", accuracy_score(y_test, y_pred) * 100, "%\n")
     print("Confusion matrix \n", confusion_matrix(y_test, y_pred))
 
     # Print to file
-    print("Writing to " + valid_file)
-    f = open(valid_file, "w")
+    print("Writing to " + eval_file)
+    f = open(eval_file, "w")
     f.write("Sequence id, Predicted class \n");
     for i, d in enumerate(testing_data): f.write(d[0] + ", " + y_pred[i] + "\n");
     f.close()

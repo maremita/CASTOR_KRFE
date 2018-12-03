@@ -23,7 +23,7 @@ def parse_arguments():
                         "train a model with a dataset of labeled"
                         "genomic sequences")
  
-    parser.add_argument('-v', '--validate',
+    parser.add_argument('-e', '--evaluate',
                         action='store_true',
                         help="Validate dataset")
  
@@ -42,7 +42,7 @@ def parse_arguments():
                         nargs='?',
                         help="CSV file containing the labels of the sequences"
                         "with the format : ID,label"
-                        "The file could be used in the training/validation modes")
+                        "The file could be used in the training/evaluation modes")
 
     # Model File
     parser.add_argument('-m', '--model',
@@ -114,7 +114,7 @@ def main():
 
     # Modes
     mode_training = args.train
-    mode_validation = args.validate
+    mode_evaluation = args.evaluate
     mode_prediction = args.predict
 
     # Files and output directory
@@ -130,7 +130,7 @@ def main():
     if not kmers_file: kmers_file = output_dir+'Kmers.txt'
     if not model_file: model_file = output_dir+'model.pkl'
     
-    if mode_training or mode_validation:
+    if mode_training or mode_evaluation:
         if not class_file:
             raise ValueError("CSV class file is required for this mode")
 
@@ -172,10 +172,10 @@ def main():
         utils.save_model(model, model_file)
 
     ######################
-    ## Validation mode ###
+    ## Evaluation mode ###
     ######################
-    if mode_validation:
-        print("\nValidation mode\n")
+    if mode_evaluation:
+        print("\nEvaluation mode\n")
         # Get testing dataset
         print("Loading of the testing dataset...")
         testing_data = data.generateLabeledData(fasta_file, class_file)
@@ -184,12 +184,12 @@ def main():
         print("Loading the model from file...")
         model = utils.load_model(model_file)
         
-        # Validation
-        print("\nValidation")
+        # Evaluation
+        print("\nEvaluation")
         # the value of best_k_mers will be fetched from a file
         best_k_mers = utils.fetch_list_from_file(kmers_file)
-        valid_file = output_dir+"Validation.txt"
-        evaluation.validation(model, testing_data, best_k_mers, valid_file)
+        eval_file = output_dir+"Evaluation.txt"
+        evaluation.evaluation(model, testing_data, best_k_mers, eval_file)
  
     ######################
     ## Prediction mode ###
