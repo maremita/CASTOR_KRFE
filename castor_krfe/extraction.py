@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import StratifiedKFold
 
-def extractKmers(T, training_data, k_min, k_max, features_min, features_max):
+def extractKmers(T, training_data, k_min, k_max, features_min, features_max, fig_file, kmers_file):
 	# List of different lengths of k-mer
 	k_mers_range = range(k_min, k_max + 1)
 	# Features range
@@ -49,7 +49,7 @@ def extractKmers(T, training_data, k_min, k_max, features_min, features_max):
 	
 		# Genrate matrice attributes and matrice class
 		print("Generate matrices...")
-		X, y = matrices.generateMatrice(training_data, k_mers, k)
+		X, y = matrices.generateXYMatrice(training_data, k_mers, k)
 
 		# Identify maximum value of the matrice
 		X_max = max(max(X))
@@ -156,12 +156,14 @@ def extractKmers(T, training_data, k_min, k_max, features_min, features_max):
 	title = "F-measure : " + str(optimal_score) + " K-mer size : " + str(best_k_length) + " Number of features : " + str(index + 1)
 	plt.title(title)
 	plt.legend()
-	fname = str("Output/Analysis")
+	print("Saving figure to " + fig_file + ".png")
+	fname = str(fig_file)
 	plt.savefig(fname)
 
 
 	# Open a file
-	f = open("Output/Kmers.txt", "w")
+	print("Writing to " + kmers_file)
+	f = open(kmers_file, "w")
 	# Add k-mers
 	for i in best_k_mers: f.write(str(i) + "\n");
 	# Close opend file
