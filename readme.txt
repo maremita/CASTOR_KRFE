@@ -49,42 +49,69 @@
 
 
 
-=====EXAMPLES OF USE=======================================================================================================
-*																																								  *
-* Training mode example : 																																  *
-* 																																								  *
-* Command : python -W ignore Main.py -t -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv 										  *
-*           --kmin 5 --kmax 10 --fmin 10 --fmax 25 --threshold 1 -k ListOfIdentifiedKmers.txt  						           *
-*																																								  *
-* Description : This command will allow to extract at least 10 features (--fmin 10) and at most 10 features (--fmax 25)   *
-* based on k-mers with a minimum and maximum length of respectively 5 and 10 (--kmin 5, --kmax 10). These features will   *
-* be extracted from the sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels are specified in the CSV file *
-* (-c Data/HIVGRPCG/class.csv).  The threshold (--threshold 1) to reduce the number of attributes is 1 (default value).   *
-* A prediction model will be generated (-t) and the extracted features saved in the file (-k ListOfIdentifiedKmers.txt).  *
-*
-*
-*
-* Evaluation mode example : 
-*
-* Command : python -W ignore Main.py -e -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv -m Output/model.pkl 
-*
-* Description : This command will allow to evaluate (-e) the model (-m Output/model.pkl) with the prediction of
-* the sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels are specified in the CSV file 
-* (-c Data/HIVGRPCG/class.csv).
-*
-*
-*
-* Prediction  mode example: 
-*
-* Command : python -W ignore Main.py -p -f Data/HIVGRPCG/data.fa -m Output/model.pkl
-*
-===========================================================================================================
+=====EXAMPLES OF USE=====================================================================================================
+*																																								*
+* Training mode example : 																																*
+* 																																								*
+* Command : python -W ignore Main.py -t -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv 										*
+*           --kmin 5 --kmax 10 --fmin 10 --fmax 25 --threshold 1 -k ListOfIdentifiedKmers.txt  						         *
+*																																								*
+* Description : This command will allow to extract at least 10 features (--fmin 10) and at most 10 features (--fmax 25) *
+*               based on k-mers with a minimum and maximum length of respectively 5 and 10 (--kmin 5, --kmax 10). These *
+*					 features will be extracted from the sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels *
+*					 are specified in the CSV file (-c Data/HIVGRPCG/class.csv). The threshold (--threshold 1) to reduce the *
+*				    number of attributes is 1 (default value). A prediction model will be generated (-t) and the extracted  *
+*					 features saved in the file (-k ListOfIdentifiedKmers.txt).  														   * 
+*																																								*
+*																																								*
+*																																								*
+* Evaluation mode example : 																															*
+*																																								*
+* Command : python -W ignore Main.py -e -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv -m Output/model.pkl 			*
+*																																								*
+* Description : This command will allow to evaluate (-e) the model (-m Output/model.pkl) with the prediction of the     *
+*					 sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels are specified in the CSV file       *
+*               (-c Data/HIVGRPCG/class.csv). The results will be given in the Evaluation.txt file of folder Ouput.     *
+*																																								*
+*																																								*
+*																																								*
+* Prediction  mode example: 																															*
+*																																								*
+* Command : python -W ignore Main.py -p -f Data/HIVGRPCG/data.fa -m Output/model.pkl												*
+*																																								*
+* Description : This command will allow to predict (-p) the classes of the unknown sequences of the file 					*
+* 					 (-f Data/HIVGRPCG/data.fa) based on the model (-m Output/model.pkl). The results will be 					*
+*					 given in the Prediction.txt file of folder Ouput.																			*
+*																																								*
+=========================================================================================================================
 
 
 
-=====INPUT FILES======
-
-======================
+=====INPUT FILES==========================================================
+* FASTA : Contains the sequences in fasta format                         *
+*																								 *
+* Example : >Id Description 															 *
+*				CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC *
+*				>Id Description 															 *
+*				CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC *
+*				>Id Description 															 *	
+*				CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC *
+*				>Id Description                                              *
+*				CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC *
+*				>Id Description                                              *
+*				CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC *
+* 																								 *
+* CSV :  Contains the classes associated with each sequence					 *
+* Example : Id,Class																		 *
+*				Id,Class																		 *
+*				Id,Class																		 *
+*				Id,Class																		 *
+*				Id,Class																		 *
+*																							  	 *
+* MODEL : Contains a prediction model in pkl format							 *
+*																								 * 
+* For more detailed examples see the data sets in the Data folder        *
+==========================================================================
 
 
 
