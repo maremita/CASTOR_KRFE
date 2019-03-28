@@ -36,8 +36,8 @@ CASTOR-KRFE contains three modes:
 -k [KMERS], --kmers [KMERS] : Name of the file of the extracted k-mers list (Défault : Kmers.txt) <br/>
 -o [OUTPUT], --output [OUTPUT] : Output directory. If it is not specified, the program uses Output/ folder <br/>
 --threshold [THRESHOLD] : Percentage of performance loss in terms of F-measure to reduce the number of attributes <br/>
-				Default : T = 1 <br/>                                                             
-				To reduce the number of features T = 0,99 showed great performance <br/>
+Default : T = 1 <br/>
+To reduce the number of features T = 0,99 showed great performance <br/>
 --kmin [KMIN] : Minimum length of k-mer(s) <br/>
 --kmax [KMAX] : Maximum length of k-mer(s) <br/>
 --fmin [FMIN] : Minimum number of features to identify <br/>
@@ -47,40 +47,40 @@ CASTOR-KRFE contains three modes:
 
 ## Examples
 					
-* Training mode example :
+### Training mode example :
 
-Command : <br/>
+#### Command : <br/>
 python -W ignore Main.py -t -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv --kmin 5 --kmax 10 --fmin 10 --fmax 25 --threshold 1 -k ListOfIdentifiedKmers.txt
 
-Description : <br/>
+#### Description : <br/>
 This command will allow to extract at least 10 features (--fmin 10) and at most 25 features (--fmax 25) based on k-mers with a minimum and maximum length of respectively 5 and 10 (--kmin 5, --kmax 10). <br/>
 These features will be extracted from the sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels are specified in the CSV file (-c Data/HIVGRPCG/class.csv). <br/>
 The threshold (--threshold 1) to reduce the number of attributes is 1 (default value). <br/>
 A prediction model will be generated (-t) and the extracted features saved in the file (-k ListOfIdentifiedKmers.txt).
 
-* Evaluation mode example :
+### Evaluation mode example :
 
-Command : <br/>
+#### Command : <br/>
 python -W ignore Main.py -e -f Data/HIVGRPCG/data.fa -c Data/HIVGRPCG/class.csv -m Output/model.pkl 			
 
-Description : <br/>
+#### Description : <br/>
 This command will allow to evaluate (-e) the model (-m Output/model.pkl) with the prediction of the sequences of the fasta file (-f Data/HIVGRPCG/data.fa) whose labels are specified in the CSV file (-c Data/HIVGRPCG/class.csv). <br/>
 The results will be given in the Evaluation.txt file of folder Ouput.
 
-* Prediction  mode example :
+### Prediction  mode example :
 
-Command : <br/>
+#### Command : <br/>
 python -W ignore Main.py -p -f Data/HIVGRPCG/data.fa -m Output/model.pkl
 
-Description : <br/>
+#### Description : <br/>
 This command will allow to predict (-p) the classes of the unknown sequences of the file (-f Data/HIVGRPCG/data.fa) based on the model (-m Output/model.pkl). <br/>
 The results will be given in the Prediction.txt file of folder Ouput.
 
 
 ## Input Files
 
-- FASTA : Contains the sequences in fasta format <br/>
-Example :<br/>
+### FASTA : Contains the sequences in fasta format <br/>
+
 >Id Description <br/>
 CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC <br/>
 >Id Description <br/>
@@ -92,15 +92,15 @@ CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC <br/>
 >Id Description <br/>
 CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC <br/>
 
-- CSV :  Contains the classes associated with each sequence					 
-Example : <br/>
+### CSV :  Contains the classes associated with each sequence					 
+
 Id,Class <br/>
 Id,Class <br/>
 Id,Class <br/>
 Id,Class <br/>
 Id,Class <br/>
 
-- MODEL : Contains a prediction model in pkl format							 
+### MODEL : Contains a prediction model in pkl format							 
 
 For more detailed examples see the data sets in the Data folder        
 
