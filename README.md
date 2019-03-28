@@ -25,19 +25,19 @@ CASTOR-KRFE contains three modes:
 
 ## Options
 
--h : Show the help <br/>  
--t, --train : Extract best kmer features and train a model with a dataset of labeled genomic sequences <br/>	   	  
--e, --evaluate : Evaluate a model prediction with a dataset of labeled genomic sequences <br/>					  
+-h : Show the help <br/>
+-t, --train : Extract best kmer features and train a model with a dataset of labeled genomic sequences <br/>
+-e, --evaluate : Evaluate a model prediction with a dataset of labeled genomic sequences <br/>
 -p, --predict : Predict classes of unknown genomic sequences <br/>
 -f FASTA, --fasta FASTA : Fasta file containing the sequences (the file is used in the three modes) <br/>
 -c [CSV], --csv [CSV] : CSV file containing the labels of the sequences with the format : ID,label <br/>
-			The file could be used in the training/evaluation modes.                                       
+> The file could be used in the training/evaluation modes.                                       
 -m [MODEL], --model [MODEL] : File of the model <br/>
 -k [KMERS], --kmers [KMERS] : Name of the file of the extracted k-mers list (Défault : Kmers.txt) <br/>
 -o [OUTPUT], --output [OUTPUT] : Output directory. If it is not specified, the program uses Output/ folder <br/>
 --threshold [THRESHOLD] : Percentage of performance loss in terms of F-measure to reduce the number of attributes <br/>
-Default : T = 1 <br/>
-To reduce the number of features T = 0,99 showed great performance <br/>
+> Default : T = 1 <br/>
+> To reduce the number of features T = 0,99 showed great performance <br/>
 --kmin [KMIN] : Minimum length of k-mer(s) <br/>
 --kmax [KMAX] : Maximum length of k-mer(s) <br/>
 --fmin [FMIN] : Minimum number of features to identify <br/>
@@ -94,11 +94,11 @@ CTCAACTCAGTTCCACCAGGCTCTGTTGGATCCGAGGGTAAGGGCTCTGTATTTTCCTGC <br/>
 
 ### CSV :  Contains the classes associated with each sequence					 
 
-Id,Class <br/>
-Id,Class <br/>
-Id,Class <br/>
-Id,Class <br/>
-Id,Class <br/>
+>Id,Class <br/>
+>Id,Class <br/>
+>Id,Class <br/>
+>Id,Class <br/>
+>Id,Class <br/>
 
 ### MODEL : Contains a prediction model in pkl format							 
 
